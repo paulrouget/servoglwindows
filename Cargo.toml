@@ -1,0 +1,13 @@
+[package]
+name = "synchro_glwindows"
+version = "0.1.0"
+authors = ["Paul Rouget <me@paulrouget.com>"]
+
+[dependencies]
+glutin = { git = "https://github.com/tomaka/glutin.git" }
+synchro_servo = { git = "https://github.com/paulrouget/synchro-servo.git" }
+winit = "0.6"
+gleam = "0.4"
+euclid = "0.11"
+lazy_static = "0.2"
+log = "0.3"
