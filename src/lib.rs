@@ -159,6 +159,16 @@ impl GLWindow {
         }
     }
 
+    pub fn make_current(&self) {
+        unsafe {
+            self.glutin_window.make_current().unwrap();
+        };
+    }
+
+    pub fn id(&self) -> GLWindowId {
+        self.glutin_window.id()
+    }
+
     pub fn create_event_loop_riser(&self) -> Box<GLWindowEventLoopRiser> {
         box GLWindowEventLoopRiser
     }
