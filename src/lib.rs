@@ -17,7 +17,7 @@ use gleam::gl;
 use std::rc::Rc;
 use std::cell::RefCell;
 use std::collections::HashMap;
-use synchro_servo::{DrawableGeometry, EventLoopRiser, TouchEventType, ScrollLocation};
+use synchro_servo::{DrawableGeometry, GLMethods, EventLoopRiser, TouchEventType, ScrollLocation};
 use synchro_servo::WindowEvent as ServoWindowEvent;
 use synchro_servo::Cursor as ServoCursor;
 
@@ -123,6 +123,17 @@ pub fn run<F: FnMut(ServoWindowEvent, Option<GLWindowId>)>(mut callback: F) {
 pub struct GLWindow {
     gl: Rc<gl::Gl>,
     glutin_window: glutin::Window,
+}
+
+impl GLMethods for GLWindow {
+    fn swap_buffers(&self) {
+        self.glutin_window.swap_buffers();
+    }
+    fn make_current(&self) {
+        unsafe {
+            self.glutin_window.make_current();
+        };
+    }
 }
 
 impl GLWindow {
