@@ -127,12 +127,12 @@ pub struct GLWindow {
 
 impl GLMethods for GLWindow {
     fn swap_buffers(&self) {
-        self.glutin_window.swap_buffers();
+        self.glutin_window.swap_buffers().unwrap();
     }
-    fn make_current(&self) {
+    fn make_current(&self) -> Result<(),()> {
         unsafe {
-            self.glutin_window.make_current();
-        };
+            self.glutin_window.make_current().map_err(|_| ())
+        }
     }
 }
 
@@ -146,7 +146,6 @@ impl GLWindow {
             .expect("Failed to create window.");
 
         let gl = unsafe {
-            // FIXME: make_current here?
             glutin_window
                 .make_current()
                 .expect("Couldn't make window current");
@@ -170,12 +169,6 @@ impl GLWindow {
         }
     }
 
-    pub fn make_current(&self) {
-        unsafe {
-            self.glutin_window.make_current().unwrap();
-        };
-    }
-
     pub fn id(&self) -> GLWindowId {
         self.glutin_window.id()
     }
@@ -186,10 +179,6 @@ impl GLWindow {
 
     pub fn show(&self) {
         self.glutin_window.show()
-    }
-
-    pub fn swap_buffers(&self) {
-        self.glutin_window.swap_buffers().unwrap()
     }
 
     pub fn set_cursor(&self, cursor: ServoCursor) {
