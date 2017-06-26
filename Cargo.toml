@@ -1,5 +1,5 @@
 [package]
-name = "synchro_glwindows"
+name = "servoglwindows"
 version = "0.1.0"
 authors = ["Paul Rouget <me@paulrouget.com>"]
 
