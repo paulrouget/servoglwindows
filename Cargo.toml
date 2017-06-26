@@ -5,9 +5,10 @@ authors = ["Paul Rouget <me@paulrouget.com>"]
 
 [dependencies]
 glutin = { git = "https://github.com/tomaka/glutin.git" }
-synchro_servo = { git = "https://github.com/paulrouget/synchro-servo.git" }
+servoapi = { git = "https://github.com/paulrouget/servoapi.git" }
 winit = "0.6"
 gleam = "0.4"
-euclid = "0.11"
+euclid = "0.15"
 lazy_static = "0.2"
 log = "0.3"
+bitflags = "0.7"
